@@ -1,10 +1,23 @@
 <!DOCTYPE html>
 
-<polymer-element name="x-note-view" extends="li">
+<polymer-element name="x-note-element" extends="li">
   <template>
+    <style>
+      li {
+        background-color: beige;
+        padding: 10px;
+        border: 1px solid black;
+      }
+    </style>
+  
     <h3>{{note.title}}</h3>
     <p>{{note.content}}</p>
+    <br />
+    <p>{{note.timeCreated}}</p>
+      
+    
+    <input type="submit" value="Discard" on-click="{{discardNote}}">
   </template>
-  
+
   <script type="application/dart" src="note_view.dart"></script>
 </polymer-element>

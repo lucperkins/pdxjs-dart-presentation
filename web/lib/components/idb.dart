@@ -1,7 +1,9 @@
+library idb;
+
 import 'dart:async';
 import 'dart:html';
 import 'dart:indexed_db';
-import 'notebook_view.dart' show Note, Notebook;
+import 'models.dart' show Note;
 
 class NotesDb {
   static const String NOTES_STORE = 'notesStore';
