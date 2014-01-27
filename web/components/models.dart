@@ -19,12 +19,19 @@ class Note {
     timeUpdated = now;
   }
   
+  Note.fromJson(Map<String, dynamic> json):
+    title = json['title'],
+    content = json['content'],
+    timeCreated = DateTime.parse(json['timeCreated']),
+    timeUpdated = DateTime.parse(json['timeUpdated']),
+    updated = json['updated'] {}
+  
   Note.fromRawKV(dynamic key, Map<String, dynamic> value):
     title = value['title'],
     content = value['content'],
     timeCreated = DateTime.parse(value['timeCreated']),
     timeUpdated = DateTime.parse(value['timeUpdated']),
-    updated = value['updated'] { }
+    updated = value['updated'] {}
   
   Map<String, dynamic> toJson() {
     return {
@@ -34,5 +41,19 @@ class Note {
       'timeUpdated': timeUpdated.toString(),
       'updated': updated
     };
+  }
+  
+  int compareTo(Note note) {
+    if (title != null) {
+      return title.compareTo(note.title);
+    }
+  }
+  
+  String toString() {
+    return 'Note: ${title}';
+  }
+  
+  void display() {
+    print(this.toString());
   }
 }

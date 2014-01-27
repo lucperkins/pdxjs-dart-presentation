@@ -71,12 +71,4 @@ class NotesStore {
     store.clear();
     return trans.completed;
   }
-  
-  Future pushToServer() {
-    List<Map<String, dynamic>> notesAsJson = new List();
-    notebook.forEach((Note note) {
-      notesAsJson.add(note.toJson());
-    });
-    return notesAsJson;
-  }
 }
