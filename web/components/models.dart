@@ -19,6 +19,11 @@ class Note {
     timeUpdated = now;
   }
   
+  Note strip() {
+    title.trim();
+    content.trim();
+  }
+  
   Note.fromJson(Map<String, dynamic> json):
     title = json['title'],
     content = json['content'],

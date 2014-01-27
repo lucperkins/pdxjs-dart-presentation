@@ -7,7 +7,13 @@ class AuthSubmitElement extends PolymerElement {
   @observable String password = 'password';
   
   void submit(Event e, dynamic detail, Node target) {
-    HttpRequest.postFormData('/auth', data, withCredentials: asdf, responseType: asdf, requestHeaders: asdf, onProgress: asdf)
+    HttpRequest.postFormData('/auth', data, withCredentials: asdf, responseType: asdf, requestHeaders: asdf, onProgress: asdf).then((HttpRequest req) {
+      handleAuthResponse(req);
+    });
+  }
+  
+  void handleAuthResponse(String response) {
+    
   }
   
   AuthSubmitElement.created() : super.created();
