@@ -1,7 +1,8 @@
+import 'dart:async';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'models.dart' show Note;
-// import 'idb.dart';
+import 'idb.dart';
 
 @CustomTag('x-notebook-element')
 class NotebookElement extends PolymerElement {
@@ -9,10 +10,12 @@ class NotebookElement extends PolymerElement {
   @observable String title = 'title';
   @observable String content = 'content';
   
+  NotesDb _db = new NotesDb();
+  NotesStore _store;
+  
   void addNote(Event e, dynamic detail, Node target) {
     Note note = new Note(title, content);
     notes.add(note);
-    print(this.children);
   }
   
   void clearNotes(Event e, dynamic detail, Node target) {
@@ -20,11 +23,25 @@ class NotebookElement extends PolymerElement {
   }
   
   void saveNotes(Event e, dynamic detail, Node target) {
-    // notes.saveToDb().then((_) => window.alert('Your notes have been saved!'));
-    print('saved!');
+    notes.forEach((Note note) {
+      _store.addNote(note);
+    });
   }
-   
+  
+  void deleteNotes(Event e, dynamic detail, Node target) {
+    _store.deleteAll().then((_) {
+      notes.clear();
+    });
+  }
+  
   NotebookElement.created() : super.created() {
-    print(this.childNodes);
+    _db.open().then((NotesStore store) {
+      _store = store;      
+      store.loadNotesFromDb().then((List<Note> loadedNotes) {
+        loadedNotes.forEach((Note note) {
+          notes.add(note);
+        });
+      });
+    });
   }
 }

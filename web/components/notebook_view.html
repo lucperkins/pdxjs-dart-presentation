@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 
 <link rel="import" href="note_view.html">
+<link rel="import" href="auth_submit.html">
 
 <polymer-element name="x-notebook-element">
   <template>
@@ -10,6 +11,8 @@
       }
     </style>
   
+    <!-- <x-auth-submit></x-auth-submit> -->
+  
     <ul>
       <template repeat="{{note in notes}}">
         <li is="x-note-element" note="{{note}}"></li>
@@ -18,7 +21,8 @@
     
     <template if="{{notes.length > 0}}">
       <input type="submit" value="Clear Notes" on-click="{{clearNotes}}">
-      <input type="submit" value="Save Notes" on-click="{{saveNotes}}"">
+      <input type="submit" value="Save Notes" on-click="{{saveNotes}}">
+      <input type="submit" value="Delete Notes" on-click="{{deleteNotes}}">
       <br />
       <br />
     </template>

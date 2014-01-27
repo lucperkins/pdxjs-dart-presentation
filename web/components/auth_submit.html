@@ -1,0 +1,11 @@
+<!DOCTYPE html>
+
+<polymer-element name="x-auth-submit">
+  <template>
+    Username: <input type="text" value="{{username}}">
+    Password: <input type="text" value="{{password}}">
+    <input type="submit" value="Submit" on-click="{{authenticate}}">
+  </template>
+  
+  <script type="application/dart" src="auth_submit.dart"></script>
+</polymer-element>

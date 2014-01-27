@@ -21,17 +21,16 @@ class NotesDb {
         .then(_loadDb);
   }
   
-  
   void _initDb(VersionChangeEvent e) {
     Database db = (e.target as Request).result;
     ObjectStore store = db.createObjectStore(NOTES_STORE, autoIncrement: true);
     store.createIndex(TITLE_INDEX, 'title', unique: true);
   }
   
-  Future _loadDb(Database db) {
+  NotesStore _loadDb(Database db) {
     _db = db;
     _notesStore = new NotesStore(this);
-    return _notesStore.loadNotesFromDb();
+    return _notesStore;
   }
 }
 
@@ -51,7 +50,6 @@ class NotesStore {
       notebook.add(note);
     });
     return trans.completed.then((_) {
-      print(notebook.length);
       return notebook;
     });
   }
@@ -65,5 +63,20 @@ class NotesStore {
       Note note = new Note.fromRawKV(addedKey, noteJson);
       notebook.add(note);
     });
+  }
+  
+  Future deleteAll() {
+    Transaction trans = notesDb.db.transaction(NotesDb.NOTES_STORE, READ_WRITE);
+    ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
+    store.clear();
+    return trans.completed;
+  }
+  
+  Future pushToServer() {
+    List<Map<String, dynamic>> notesAsJson = new List();
+    notebook.forEach((Note note) {
+      notesAsJson.add(note.toJson());
+    });
+    return notesAsJson;
   }
 }
