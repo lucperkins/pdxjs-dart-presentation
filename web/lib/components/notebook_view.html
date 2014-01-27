@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<link rel="import" href="note_view.html">
+<!-- <link rel="import" href="note_input.html"> -->
+
+<polymer-element name="x-notebook-element">
+  <template>
+    <ul>
+      <template repeat="{{note in notebook}}">
+        <li is="x-note-view" note="{{note}}"></li>
+      </template>
+    </ul>
+    
+    Title: <input type="text" type="submit" value="{{title}}">
+    Content: <input type="text" type="submit" value="{{content}}">
+    <br /><br />
+    <input type="submit" value="Submit" on-click="{{addNote}}">
+  </template>
+  
+  <script type="application/dart" src="notebook_view.dart"></script>
+</polymer-element>
