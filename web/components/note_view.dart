@@ -26,7 +26,5 @@ class NoteElement extends LIElement with Polymer, Observable {
     _db.open().then((NotesStore store) {
       _store = store;
     });
-    this.draggable = true;
-
   }
 }

@@ -1,6 +1,8 @@
 import 'compatible_json.dart' show CompatibleJson;
 import 'package:polymer/polymer.dart';
 
+class Json = Map<String, dynamic>;
+
 class Note extends Object with Observable, CompatibleJson {
   @observable String title, content;
   @observable DateTime timeCreated, timeUpdated;
@@ -27,13 +29,12 @@ class Note extends Object with Observable, CompatibleJson {
     content.trim();
   }
   
-  Note.fromJson(Map<String, dynamic> json):
+  Note.fromJson(Json json):
     title = json['title'],
     content = json['content'],
     timeCreated = DateTime.parse(json['timeCreated']),
     timeUpdated = DateTime.parse(json['timeUpdated']),
-    updated = json['updated'],
-    key = json['key'].toString {}
+    updated = json['updated'] {}
   
   Note.fromRawKV(dynamic idbKey, Map<String, dynamic> value):
     title = value['title'],
@@ -54,7 +55,7 @@ class Note extends Object with Observable, CompatibleJson {
     };
   }
   
-  int compareTo(Note note) {
+  int compare(Note note) {
     if (title != null) {
       return title.compareTo(note.title);
     }

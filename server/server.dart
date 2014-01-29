@@ -2,6 +2,7 @@ library server;
 
 import 'dart:io';
 import 'dart:convert';
+// import 'package:route/server.dart';
 
 const String HOST = 'localhost';
 const int PORT = 3000;
@@ -17,12 +18,11 @@ AuthInfo jesse = new AuthInfo('hallettj', 'haskellrules');
 
 List<AuthInfo> authorizedUsers = [luc, jesse];
 
-
 void startServer() {
   HttpServer.bind(HOST, PORT).then((HttpServer server) {
     server.listen((HttpRequest req) {
       switch(req.method) {
-        /* case 'GET':
+        case 'GET':
           handleGet(req);
           break; */
         case 'POST':
@@ -39,12 +39,9 @@ void startServer() {
 /* void handleGet(HttpRequest req) {
   HttpResponse res = req.response;
   print('${req.method} : ${req.uri.path}');
-  addCorsHeaders(res);
-  res.headers.contentType = new ContentType('application', 'json', charset: 'utf-8');
+  // addCorsHeaders(res);
+  // res.headers.contentType = new ContentType('application', 'json', charset: 'utf-8');
   List<Map<String, dynamic>> notesAsJsonList = new List<Map<String, dynamic>>();
-  notes.forEach((Note note) {
-    notesAsJsonList.add(note.toJson());
-  });
   String jsonString = JSON.encode(notesAsJsonList);
   print('JSON list in GET request: ${notesAsJsonList}');
   res.write(jsonString);

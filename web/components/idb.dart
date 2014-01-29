@@ -42,8 +42,14 @@ class NotesStore {
   final List<Note> notebook = new List<Note>();
   NotesStore(this.notesDb);
   
+  String notesStore = NotesDb.NOTES_STORE;
+  /* Transaction get readOnlyTransaction => notesDb.db.transaction(notesStore, READ_ONLY);
+  Transaction get readWriteTransaction => notesDb.db.transaction(notesStore, READ_WRITE);
+  ObjectStore get readOnlyStore => readOnlyTransaction.objectStore(notesStore);
+  ObjectStore get readWriteStore => readWriteTransaction.objectStore(notesStore); */
+  
   Future<List<Note>> loadNotesFromDb() {
-    Transaction trans = notesDb.db.transaction(NotesDb.NOTES_STORE, READ_ONLY);
+    Transaction trans = notesDb.db.transaction(notesStore, READ_ONLY);
     ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
     Stream<CursorWithValue> cursors = store.openCursor(autoAdvance: true).asBroadcastStream();
     cursors.listen((CursorWithValue cursor) {
@@ -55,27 +61,34 @@ class NotesStore {
     });
   }
   
-  Future addNote(Note note) {
-    Map<String, dynamic> noteJson = note.toJson();
-    Transaction trans = notesDb.db.transaction(NotesDb.NOTES_STORE, READ_WRITE);
+  Future saveAll(List<Note> notes) {
+    Transaction trans = notesDb.db.transaction(notesStore, READ_WRITE);
     ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
-    store.add(noteJson);
-    return trans.completed.then((dynamic addedKey) {
-      Note note = new Note.fromRawKV(addedKey, noteJson);
-      notebook.add(note);
+    notes.forEach((Note note) {
+      print('error point');
+      Map<String, dynamic> noteJson = note.toJson();
+      store.put(noteJson).then((dynamic addedKey) {
+        note.key = addedKey;
+        notes.add(note);
+      });
+      
+      /* return trans.completed.then((dynamic addedKey) {
+        Note note = new Note.fromRawKV(addedKey, noteJson);
+        notebook.add(note);
+      }); */
     });
   }
   
   Future deleteNote(Note note) {
     print(note.key);
-    Transaction trans = notesDb.db.transaction(NotesDb.NOTES_STORE, READ_WRITE);
+    Transaction trans = notesDb.db.transaction(notesStore, READ_WRITE);
     ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
     store.delete(note.key);
     return trans.completed;
   }
   
   Future deleteAll() {
-    Transaction trans = notesDb.db.transaction(NotesDb.NOTES_STORE, READ_WRITE);
+    Transaction trans = notesDb.db.transaction(notesStore, READ_WRITE);
     ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
     store.clear();
     return trans.completed;

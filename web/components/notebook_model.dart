@@ -1,17 +1,17 @@
 import 'dart:collection' show IterableMixin;
 import 'models.dart' show Note;
 import 'dart:convert';
-import 'dart:html';
 
 class Notebook extends Object with IterableMixin<Note> {
   List<Note> notes = new List<Note>();
   Iterator<Note> get iterator => notes.iterator;
   int get length => notes.length;
   
-  void sort() {
-    notes.sort((Note thisOne, Note thatOne) {
-      thisOne.compareTo(thatOne);
+  void sortByTitle() {
+    notes.sort((Note a, Note b) {
+      a.title.compareTo(b.title);
     });
+    notes;
   }
   
   bool contains(String title) {

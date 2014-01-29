@@ -10,20 +10,20 @@
         list-style-type: none;
       }
     </style>
-     
-    <ul>
-      <template repeat="{{note in notes}}">
-        <li is="x-note-element" note="{{note}}" \
-          on-remove-from-list="{{removeFromNotebook}}" \
-          on-delete-from-database="{{deletePermanently}}">
+    
+    <ul id="notesContainer">
+      <template repeat="{{notes}}">
+        <li is="x-note-element" note="{{}}" on-remove-from-list="{{removeFromNotebook}}" on-delete-from-database="{{deletePermanently}}">
         </li>
       </template>
     </ul>
     
     <template if="{{notes.length > 0}}">
+      <input type="submit" value="Sort by Title" on-click="{{sortByTitle}}">
       <input type="submit" value="Clear Notes" on-click="{{clearNotes}}">
       <input type="submit" value="Save Notes" on-click="{{saveNotes}}">
       <input type="submit" value="Delete Notes" on-click="{{deleteNotes}}">
+      <span>{{saveMessage}}</span>
       <br />
       <br />
     </template>
