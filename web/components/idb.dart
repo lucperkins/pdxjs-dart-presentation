@@ -4,6 +4,7 @@ import 'dart:async';
 import 'dart:html';
 import 'dart:indexed_db';
 import 'models.dart' show Note;
+// import 'compatible_json.dart' show CompatibleWithJson;
 
 class NotesDb {
   static const String NOTES_STORE = 'notesStore';
@@ -63,6 +64,14 @@ class NotesStore {
       Note note = new Note.fromRawKV(addedKey, noteJson);
       notebook.add(note);
     });
+  }
+  
+  Future deleteNote(Note note) {
+    print(note.key);
+    Transaction trans = notesDb.db.transaction(NotesDb.NOTES_STORE, READ_WRITE);
+    ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
+    store.delete(note.key);
+    return trans.completed;
   }
   
   Future deleteAll() {

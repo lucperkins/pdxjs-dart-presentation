@@ -1,6 +1,7 @@
 import 'dart:collection' show IterableMixin;
 import 'models.dart' show Note;
 import 'dart:convert';
+import 'dart:html';
 
 class Notebook extends Object with IterableMixin<Note> {
   List<Note> notes = new List<Note>();

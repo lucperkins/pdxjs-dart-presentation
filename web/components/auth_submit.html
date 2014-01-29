@@ -2,9 +2,17 @@
 
 <polymer-element name="x-auth-submit">
   <template>
-    Username: <input type="text" value="{{username}}">
-    Password: <input type="text" value="{{password}}">
-    <input type="submit" value="Submit" on-click="{{authenticate}}">
+    <form method="post" on-submit="{{authInfoSubmit}}">
+      <div>
+        Username: <input type="text" value="{{username}}" name="username">
+      </div>
+      <div>
+        Password: <input type="text" value="{{password}}" name="password">
+      </div>
+      <div>
+        <input type="submit" value="Submit Info">
+      </div>
+    </form>
   </template>
   
   <script type="application/dart" src="auth_submit.dart"></script>

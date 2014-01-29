@@ -2,17 +2,9 @@ library server;
 
 import 'dart:io';
 import 'dart:convert';
-import '../web/components/models.dart' show Note;
 
 const String HOST = 'localhost';
 const int PORT = 3000;
-
-List<Note> notes = [ new Note('stuff to remember', 'always be kind, no matter what'),
-          new Note('The Wire notes', 'fourth season is the best, hands down'),
-          new Note('Dart notes', 'study up on reified generics and abstract classes'),
-          new Note('Friday to-do list', 'buy quinoa and kale for my stupid hipster dinner party')
-        ];
-
 
 class AuthInfo {
   String username;
@@ -30,9 +22,9 @@ void startServer() {
   HttpServer.bind(HOST, PORT).then((HttpServer server) {
     server.listen((HttpRequest req) {
       switch(req.method) {
-        case 'GET':
+        /* case 'GET':
           handleGet(req);
-          break;
+          break; */
         case 'POST':
           handlePost(req);
           break;
@@ -44,7 +36,7 @@ void startServer() {
   .whenComplete(() => print('Listening for requests on port $PORT'));
 }
 
-void handleGet(HttpRequest req) {
+/* void handleGet(HttpRequest req) {
   HttpResponse res = req.response;
   print('${req.method} : ${req.uri.path}');
   addCorsHeaders(res);
@@ -57,24 +49,27 @@ void handleGet(HttpRequest req) {
   print('JSON list in GET request: ${notesAsJsonList}');
   res.write(jsonString);
   res.close();
-}
+} */
 
 void handlePost(HttpRequest req) {
   print('${req.method} : ${req.uri.path}');
   switch (req.uri.path) {
     case '/auth':
       req.listen((List<int> buffer) {
+        HttpResponse res = req.response;
         String jsonString = new String.fromCharCodes(buffer);
         List<Map<String, dynamic>> jsonList = JSON.decode(jsonString);
         print('JSON list in POST: ${jsonList}');
-        integrateDataFromClient(jsonList);
+        res.write('hello');
+        res.close();
+        // integrateDataFromClient(jsonList);
       });
       break;
   }
 
 }
 
-void integrateDataFromClient(List<Map<String, dynamic>> jsonList) {
+/* void integrateDataFromClient(List<Map<String, dynamic>> jsonList) {
   List<Note> clientNotes = new List<Note>();
   jsonList.forEach((Map map) {
     clientNotes.add(new Note.fromJson(map));
@@ -85,7 +80,7 @@ void integrateDataFromClient(List<Map<String, dynamic>> jsonList) {
       serverNotes.remove(serverNote);
     }
   });
-}
+} */
 
 void handleOptions(HttpRequest req) {
   print('${req.method}: ${req.uri.path}');

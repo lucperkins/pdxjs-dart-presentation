@@ -10,12 +10,13 @@
         list-style-type: none;
       }
     </style>
-  
-    <!-- <x-auth-submit></x-auth-submit> -->
-  
+     
     <ul>
       <template repeat="{{note in notes}}">
-        <li is="x-note-element" note="{{note}}"></li>
+        <li is="x-note-element" note="{{note}}" \
+          on-remove-from-list="{{removeFromNotebook}}" \
+          on-delete-from-database="{{deletePermanently}}">
+        </li>
       </template>
     </ul>
     
@@ -31,6 +32,8 @@
     Content: <input type="text" value="{{content}}" class="content">
     <br />
     <input type="submit" value="Submit" on-click="{{addNote}}">
+    
+    <input type="submit" value="Start Camera" on-click="{{startCamera}}">
   </template>
 
   <script type="application/dart" src="notebook_view.dart"></script>

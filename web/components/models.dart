@@ -1,16 +1,19 @@
-class Note {
-  String title;
-  String content;
-  DateTime timeCreated;
-  DateTime timeUpdated;
+import 'compatible_json.dart' show CompatibleJson;
+import 'package:polymer/polymer.dart';
+
+class Note extends Object with Observable, CompatibleJson {
+  @observable String title, content;
+  @observable DateTime timeCreated, timeUpdated;
   bool updated;
   dynamic key;
+  bool saved;
   
   Note(this.title, this.content) {
     DateTime now = new DateTime.now();
     this.timeCreated = now;
     this.timeUpdated = now;
     this.updated = false;
+    this.saved = false;
   }
   
   void update() {
@@ -29,14 +32,16 @@ class Note {
     content = json['content'],
     timeCreated = DateTime.parse(json['timeCreated']),
     timeUpdated = DateTime.parse(json['timeUpdated']),
-    updated = json['updated'] {}
+    updated = json['updated'],
+    key = json['key'].toString {}
   
-  Note.fromRawKV(dynamic key, Map<String, dynamic> value):
+  Note.fromRawKV(dynamic idbKey, Map<String, dynamic> value):
     title = value['title'],
     content = value['content'],
     timeCreated = DateTime.parse(value['timeCreated']),
     timeUpdated = DateTime.parse(value['timeUpdated']),
-    updated = value['updated'] {}
+    updated = value['updated'],
+    key = idbKey {}
   
   Map<String, dynamic> toJson() {
     return {
@@ -44,7 +49,8 @@ class Note {
       'content': content,
       'timeCreated': timeCreated.toString(),
       'timeUpdated': timeUpdated.toString(),
-      'updated': updated
+      'updated': updated,
+      'key': key.toString()
     };
   }
   
@@ -60,5 +66,11 @@ class Note {
   
   void display() {
     print(this.toString());
+  }
+  
+  Map<String, dynamic> get attributes => toJson();
+  
+  bool compatibleWithJson(Map<String, dynamic> json) {
+    return(jsonCompatible(json));
   }
 }

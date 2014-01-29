@@ -13,7 +13,13 @@ class NoteElement extends LIElement with Polymer, Observable {
   bool get applyAuthorStyles => true;
   
   void discardNote(Event e, dynamic detail, Node target) {
-    this.remove();
+    CustomEvent removeFromParentList = new CustomEvent('remove-from-list', detail: note.title);
+    dispatchEvent(removeFromParentList);
+  }
+  
+  void deleteNote(Event e, dynamic detail, Node target) {
+    CustomEvent deleteNotePermanently = new CustomEvent('delete-from-database', detail: note.title);
+    dispatchEvent(deleteNotePermanently);
   }
   
   NoteElement.created() : super.created() {
@@ -21,9 +27,6 @@ class NoteElement extends LIElement with Polymer, Observable {
       _store = store;
     });
     this.draggable = true;
-  }
 
-  void enteredView() {
-    
   }
 }
