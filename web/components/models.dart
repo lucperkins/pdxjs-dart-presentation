@@ -5,59 +5,50 @@ class Json = Map<String, dynamic>;
 
 class Note extends Object with Observable, CompatibleJson {
   @observable String title, content;
-  @observable DateTime timeCreated, timeUpdated;
-  bool updated;
+  @observable DateTime timeCreated;
   dynamic key;
-  bool saved;
+  
+  bool get notSaved => key == null;
   
   Note(this.title, this.content) {
     DateTime now = new DateTime.now();
     this.timeCreated = now;
-    this.timeUpdated = now;
-    this.updated = false;
-    this.saved = false;
-  }
-  
-  void update() {
-    updated = true;
-    DateTime now = new DateTime.now();
-    timeUpdated = now;
-  }
-  
-  Note strip() {
-    title.trim();
-    content.trim();
   }
   
   Note.fromJson(Json json):
     title = json['title'],
     content = json['content'],
-    timeCreated = DateTime.parse(json['timeCreated']),
-    timeUpdated = DateTime.parse(json['timeUpdated']),
-    updated = json['updated'] {}
+    timeCreated = DateTime.parse(json['timeCreated']) {}
   
   Note.fromRawKV(dynamic idbKey, Map<String, dynamic> value):
     title = value['title'],
     content = value['content'],
     timeCreated = DateTime.parse(value['timeCreated']),
-    timeUpdated = DateTime.parse(value['timeUpdated']),
-    updated = value['updated'],
     key = idbKey {}
-  
+   
   Map<String, dynamic> toJson() {
     return {
       'title': title,
       'content': content,
-      'timeCreated': timeCreated.toString(),
-      'timeUpdated': timeUpdated.toString(),
-      'updated': updated,
-      'key': key.toString()
+      'timeCreated': timeCreated.toString()
     };
   }
   
-  int compare(Note note) {
+  int titleCompare(Note note) {
     if (title != null) {
       return title.compareTo(note.title);
+    }
+  }
+  
+  int ageCompare(Note note) {
+    if (timeCreated != null) {
+      return timeCreated.compareTo(note.timeCreated);
+    }
+  }
+  
+  int sizeCompare(Note note) {
+    if (content != null) {
+      return content.length.compareTo(note.content.length);
     }
   }
   

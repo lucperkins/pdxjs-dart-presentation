@@ -39,7 +39,7 @@ class NotesStore {
   static const String READ_ONLY = 'readonly';
   static const String READ_WRITE = 'readwrite';
   final NotesDb notesDb;
-  final List<Note> notebook = new List<Note>();
+  final List<Note> _notes = new List<Note>();
   NotesStore(this.notesDb);
   
   String notesStore = NotesDb.NOTES_STORE;
@@ -51,40 +51,57 @@ class NotesStore {
   Future<List<Note>> loadNotesFromDb() {
     Transaction trans = notesDb.db.transaction(notesStore, READ_ONLY);
     ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
-    Stream<CursorWithValue> cursors = store.openCursor(autoAdvance: true).asBroadcastStream();
-    cursors.listen((CursorWithValue cursor) {
+    Stream<CursorWithValue> cursor = store.openCursor(autoAdvance: true).asBroadcastStream();
+    cursor.listen((CursorWithValue cursor) {
       Note note = new Note.fromRawKV(cursor.key, cursor.value);
-      notebook.add(note);
+      _notes.add(note);
     });
     return trans.completed.then((_) {
-      return notebook;
+      return _notes;
     });
   }
   
-  Future saveAll(List<Note> notes) {
+  Future saveAll(List<Note> notesList) {
+    notesList.forEach((Note note) {
+      saveNote(note);
+    });
+  }
+  
+  Future<Note> findByTitle(String title) {
     Transaction trans = notesDb.db.transaction(notesStore, READ_WRITE);
     ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
-    notes.forEach((Note note) {
-      print('error point');
-      Map<String, dynamic> noteJson = note.toJson();
-      store.put(noteJson).then((dynamic addedKey) {
-        note.key = addedKey;
-        notes.add(note);
+    Index index = store.index(NotesDb.TITLE_INDEX);
+    Future future = index.get(title);
+    return future
+      .then((Map<String, dynamic> noteJson) {
+        Note note = new Note.fromJson(noteJson);
+        return note;
       });
-      
-      /* return trans.completed.then((dynamic addedKey) {
-        Note note = new Note.fromRawKV(addedKey, noteJson);
-        notebook.add(note);
-      }); */
-    });
   }
   
-  Future deleteNote(Note note) {
-    print(note.key);
+  Future saveNote(Note note) {
+    if (note.notSaved) {
+      Transaction trans = notesDb.db.transaction(notesStore, READ_WRITE);
+      ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
+      Map<String, dynamic> noteAsJson = note.toJson();
+      store.put(noteAsJson).then((dynamic addedKey) {
+        note.key = addedKey;
+      });
+      return trans.completed.then((_) {
+        print('Notes have been saved');
+      });
+    } else {
+      print('Key is not null');
+    }
+  }
+  
+  Future deleteNote(dynamic key) {
     Transaction trans = notesDb.db.transaction(notesStore, READ_WRITE);
     ObjectStore store = trans.objectStore(NotesDb.NOTES_STORE);
-    store.delete(note.key);
-    return trans.completed;
+    store.delete(key);
+    return trans.completed.then((_) {
+      print('Note has been successfully deleted');
+    });
   }
   
   Future deleteAll() {

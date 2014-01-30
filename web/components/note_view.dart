@@ -11,7 +11,7 @@ class NoteElement extends LIElement with Polymer, Observable {
   NotesStore _store;
   
   bool get applyAuthorStyles => true;
-  
+    
   void discardNote(Event e, dynamic detail, Node target) {
     CustomEvent removeFromParentList = new CustomEvent('remove-from-list', detail: note.title);
     dispatchEvent(removeFromParentList);
@@ -23,6 +23,8 @@ class NoteElement extends LIElement with Polymer, Observable {
   }
   
   NoteElement.created() : super.created() {
+    this.draggable = true;
+    
     _db.open().then((NotesStore store) {
       _store = store;
     });

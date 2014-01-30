@@ -6,12 +6,11 @@ import 'package:route/client.dart';
 import 'dart:html';
 
 void main() {
-  Logger.root.level = Level.FINEST;
+  Logger.root.level = Level.INFO;
   Logger log = new Logger('main');
   
-  // serve();
   
-  initPolymer();  
+  initPolymer();
 }
 
 
