@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'dart:convert';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'models.dart' show Note;
@@ -6,7 +7,7 @@ import 'idb.dart';
 
 @CustomTag('x-notebook-element')
 class NotebookElement extends PolymerElement {
-  MutationObserver observer;
+  MutationObserver _observer;
     
   // We'll use an observable list for better DOM handling
   ObservableList<Note> notes = toObservable(new List<Note>());
@@ -19,6 +20,7 @@ class NotebookElement extends PolymerElement {
   @observable bool get notEmpty => notes.isNotEmpty;
   
   bool get draggable => true;
+  bool get applyAuthorStyles => true;
   
   // We'll instantiate our DB accessor and declare an accessor for our note storage
   NotesDb _db = new NotesDb();
@@ -51,7 +53,7 @@ class NotebookElement extends PolymerElement {
   
   // Saves all currently visible notes to IndexedDB
   // IndexedDB will refuse all duplicates, so the list will remain consistent
-  void saveNotes(Event e, dynamic detail, Node target) {
+  void saveNotes() {
     _store.saveAll(notes);
     /* _store.saveAll(notes).then((_) {
       print('ok');
@@ -125,32 +127,66 @@ class NotebookElement extends PolymerElement {
   
   void _onMutation(List<MutationRecord> mutations, MutationObserver observer) {
     observer.disconnect();
-    // print('${mutations.length} mutations occurred, the first to ${mutations[0].target}');
+    print('${mutations.length} mutations occurred, the first to ${mutations[0].target}');
+  }
+  
+  void loadNotesFromServer() {
+    HttpRequest.getString('http://localhost:3030/notes').then((String res) {
+      Map<String, dynamic> json = JSON.decode(res);
+      List<Map<String, dynamic>> notesAsJson = json['notes'];
+      List<Note> notesFromServer = new List<Note>();
+      notesAsJson.forEach((Map<String, dynamic> noteAsJson) {
+        Note note = new Note.fromJson(noteAsJson);
+        if (!notes.contains(note)) {
+          notes.add(note);
+        }
+      });
+    }, onError: (Event e) => print(e.type));
+  }
+  
+  @override
+  void enteredView() {
+    int _count = 0;
+    
+    new Timer.periodic(const Duration(seconds: 30), (_) {
+      print('${notes.length} saved at ${_count} seconds');
+      _count += 5;
+      saveNotes();
+    });
   }
   
   // This is a necessary constructor for ALL Polymer elements. Here, we specify that whenever 
   // a NotebookElement is created, IndexedDB is opened, the NotesStore is accessed (or created if it
   // doesn't exist yet), and all notes there are fetched and placed into the DOM
   NotebookElement.created() : super.created() {
-    observer = new MutationObserver(_onMutation);    
-    UListElement ul = shadowRoot.querySelector('ul');
-    List<LIElement> lis = shadowRoot.querySelectorAll('li');
-    observer
-      ..observe(ul, childList: true);
-      
-    int _count = 0;
-    
     _db.open().then((NotesStore store) {
       _store = store;
       store.loadNotesFromDb().then((List<Note> loadedNotes) {
         notes.addAll(loadedNotes);
         print('There are ${notes.length} notes');
       });
+      
+      new Timer.periodic(const Duration(seconds: 5), (_) {
+        loadNotesFromServer();
+      });
     });
     
-    /* new Timer.periodic(const Duration(seconds: 5), (t) {
-      _count += 5;
-      saveNotes();
+    _observer = new MutationObserver(_onMutation);    
+    UListElement ul = shadowRoot.querySelector('ul');
+    List<LIElement> lis = shadowRoot.querySelectorAll('li');
+    _observer.observe(ul,
+      childList: true,
+      attributes: true,
+      characterData: true,
+      subtree: true,
+      attributeOldValue: true,
+      characterDataOldValue: true,
+      attributeFilter: []
+    );
+      
+    
+    /* new Timer.periodic(const Duration(seconds: 60), (_) {
+      _store.syncNotesFromServer();
     }); */
   }
 }

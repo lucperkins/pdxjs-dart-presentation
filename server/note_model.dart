@@ -1,17 +1,14 @@
-import 'compatible_json.dart' show CompatibleJson;
-import 'package:polymer/polymer.dart';
-
-class Note extends Object with Comparable, Observable, CompatibleJson {
-  @observable String title, content;
-  @observable DateTime timeCreated;
-  @observable DateTime timeUpdated;
-  dynamic key;
+class Note {
+  String title, content;
+  DateTime timeCreated;
+  DateTime timeUpdated;
+  // dynamic key;
   
-  bool get notSaved => key == null;
+  // bool get notSaved => key == null;
   
-  String get timeCreatedAsString =>
+  /* String get timeCreatedAsString =>
       """${timeCreated.hour}:${timeCreated.minute} on
-      ${timeCreated.month}/${timeCreated.day}/${timeCreated.year}""";
+      ${timeCreated.month}/${timeCreated.day}/${timeCreated.year}"""; */
   
   Note(this.title, this.content) {
     DateTime now = new DateTime.now();
@@ -23,11 +20,11 @@ class Note extends Object with Comparable, Observable, CompatibleJson {
     content = json['content'],
     timeCreated = DateTime.parse(json['timeCreated']) {}
   
-  Note.fromRawKV(dynamic idbKey, Map<String, dynamic> value):
+  /* Note.fromRawKV(dynamic idbKey, Json value):
     title = value['title'],
     content = value['content'],
     timeCreated = DateTime.parse(value['timeCreated']),
-    key = idbKey {}
+    key = idbKey {} */
    
   Map<String, dynamic> toJson() {
     return {
@@ -37,7 +34,7 @@ class Note extends Object with Comparable, Observable, CompatibleJson {
     };
   }
   
-  int titleCompare(Note note) {
+  /* int titleCompare(Note note) {
     if (title != null) {
       return title.compareTo(note.title);
     }
@@ -67,10 +64,5 @@ class Note extends Object with Comparable, Observable, CompatibleJson {
   
   bool compatibleWithJson(Map<String, dynamic> json) {
     return(jsonCompatible(json));
-  }
-  
-  @override
-  int compareTo(Note other) {
-    return title.compareTo(other.title);
-  }
+  } */
 }

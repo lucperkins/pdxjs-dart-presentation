@@ -2,32 +2,21 @@ library server;
 
 import 'dart:io';
 import 'dart:convert';
-// import 'package:route/server.dart';
+import 'note_model.dart' show Json, Note;
 
 const String HOST = 'localhost';
-const int PORT = 3000;
+const int PORT = 3030;
 
-class AuthInfo {
-  String username;
-  String password;
-  AuthInfo(this.username, this.password);
-}
-
-AuthInfo luc = new AuthInfo('lucperkins', 'godaddysucks');
-AuthInfo jesse = new AuthInfo('hallettj', 'haskellrules');
-
-List<AuthInfo> authorizedUsers = [luc, jesse];
-
-void startServer() {
+void startServer(List<Note> notes) {
   HttpServer.bind(HOST, PORT).then((HttpServer server) {
     server.listen((HttpRequest req) {
       switch(req.method) {
         case 'GET':
-          handleGet(req);
-          break; */
-        case 'POST':
-          handlePost(req);
+          handleGet(req, notes);
           break;
+        /* case 'POST':
+          handlePost(req);
+          break; */
         default: defaultHandler(req);
       }
     }, onError: printError);
@@ -36,17 +25,27 @@ void startServer() {
   .whenComplete(() => print('Listening for requests on port $PORT'));
 }
 
-/* void handleGet(HttpRequest req) {
-  HttpResponse res = req.response;
-  print('${req.method} : ${req.uri.path}');
-  // addCorsHeaders(res);
-  // res.headers.contentType = new ContentType('application', 'json', charset: 'utf-8');
-  List<Map<String, dynamic>> notesAsJsonList = new List<Map<String, dynamic>>();
-  String jsonString = JSON.encode(notesAsJsonList);
-  print('JSON list in GET request: ${notesAsJsonList}');
-  res.write(jsonString);
-  res.close();
-} */
+void handleGet(HttpRequest req, List<Note> notes) {
+  switch (req.uri.path){
+    case '/notes':
+      HttpResponse res = req.response;
+      print('${req.method} : ${req.uri.path}');
+      addCorsHeaders(res);
+      res.headers.contentType = new ContentType('application', 'json', charset: 'utf-8');
+      List<Map<String, dynamic>> notesAsJson = new List<Map<String, dynamic>>();
+      notes.forEach((Note note) {
+        Map<String, dynamic> noteAsJson = note.toJson();
+        notesAsJson.add(noteAsJson);
+      });
+      Map<String, dynamic> finalJson = { 'notes': notesAsJson };
+      res.write(JSON.encode(finalJson));
+      res.close();
+      break;
+    default:
+      defaultHandler(req);
+      break;      
+  }
+}
 
 void handlePost(HttpRequest req) {
   print('${req.method} : ${req.uri.path}');
@@ -79,6 +78,7 @@ void handlePost(HttpRequest req) {
   });
 } */
 
+/*
 void handleOptions(HttpRequest req) {
   print('${req.method}: ${req.uri.path}');
   HttpResponse res = req.response;
@@ -86,6 +86,7 @@ void handleOptions(HttpRequest req) {
   res.statusCode = HttpStatus.NO_CONTENT;
   res.close();
 }
+*/
 
 void defaultHandler(HttpRequest req) {
   print('${req.method}: ${req.uri.path}');
@@ -106,5 +107,11 @@ void addCorsHeaders(HttpResponse res) {
 }
 
 void main() {
-  startServer();
+  List<Note> notes = [
+                       new Note('things to buy at the store', 'eggs, bread, cream cheese'),
+                       new Note('favorite movies of all time', 'Die Hard'),
+                       new Note('albums to buy', 'Beatles, "Abbey Road"')
+                     ];
+  
+  startServer(notes);
 }

@@ -7,14 +7,16 @@
         padding: 10px;
         border: 1px solid black;
         background-color: beige;
+        max-width: 300px;
+        scroll: overflow;
       }
     </style>
   
     <h3>{{note.title}}</h3>
     <p>{{note.content}}</p>
     <br />
-    <p>{{note.timeCreated}}</p>
-    <p>{{note.key}}</p>
+    <p>{{note.timeCreatedAsString}}</p>
+    <!-- <p>{{note.key}}</p> -->
     
     <input type="submit" value="Discard" on-click="{{discardNote}}">
     <input type="submit" value="Delete" on-click="{{deleteNote}}">

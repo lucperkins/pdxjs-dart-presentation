@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+
+<polymer-element name="x-calendar-element">
+  <template>
+    <style>
+      * {
+        padding: 5px;
+      }
+      thead td {
+        height: 20px;
+        width: 35px;
+        border: 1px solid black;
+        background-color: beige;
+      }
+      tbody td {
+        height: 20px;
+        width: 35px;
+        border: 1px solid gray;
+      }
+    </style>
+    
+    <h3>{{monthName}}</h3>
+      
+    <table id="calendar">
+      <thead>
+        <tr>
+          <template repeat="{{day in week}}">
+            <td>{{day}}</td>
+          </template>
+        </tr>
+      </thead>
+      <tbody>
+        <template repeat="{{week in month}}">
+          <tr>
+            <template repeat="{{day in week}}">
+              <td is="x-day-element">{{day.day}}</td>
+            </template>
+          </tr>
+        </template>
+      </tbody>
+    </table>
+  </template>
+  
+  <script type="application/dart" src="calendar.dart"></script>
+</polymer-element>

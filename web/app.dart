@@ -1,18 +1,17 @@
 library app;
 
+import 'dart:html';
 import 'package:polymer/polymer.dart';
 import 'package:logging/logging.dart';
 import 'package:route/client.dart';
-import 'dart:html';
+
 
 void main() {
   Logger.root.level = Level.INFO;
   Logger log = new Logger('main');
-  
-  
+
   initPolymer();
 }
-
 
 void serve() {
   String rootPath = window.location.pathname;

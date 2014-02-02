@@ -6,7 +6,7 @@
 <polymer-element name="x-notebook-element">
   <template>
     <style>
-      * {
+      :scope {
         list-style-type: none;
       }
     </style>
@@ -30,8 +30,11 @@
       <br />
     </template>
     
-    Title: <input type="text" value="{{title}}" class="title">
-    Content: <input type="text" value="{{content}}" class="content">
+    Title:<br />
+    <input type="text" value="{{title}}" class="title">
+    <br />
+    Content:<br />
+    <textarea value="{{content}}" class="content"></textarea>
     <br />
     <input type="submit" value="Submit" on-click="{{addNote}}">
     
