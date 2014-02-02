@@ -1,7 +1,6 @@
 import 'package:polymer/polymer.dart';
 import 'dart:html';
-import 'models.dart' show Note;
-import 'idb.dart';
+import '../../lib/data.dart' show Note, NotesDb, NotesStore;
 
 @CustomTag('x-note-element')
 class NoteElement extends LIElement with Polymer, Observable {

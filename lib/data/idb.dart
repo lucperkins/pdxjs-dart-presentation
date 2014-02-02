@@ -1,11 +1,4 @@
-library idb;
-
-import 'dart:async';
-import 'dart:convert';
-import 'dart:html';
-import 'dart:indexed_db';
-import 'models.dart' show Note;
-// import 'compatible_json.dart' show CompatibleWithJson;
+part of data;
 
 class NotesDb {
   static const String NOTES_STORE = 'notesStore';

@@ -1,5 +1,4 @@
-import 'compatible_json.dart' show CompatibleJson;
-import 'package:polymer/polymer.dart';
+part of data;
 
 class Note extends Object with Comparable, Observable, CompatibleJson {
   @observable String title, content;

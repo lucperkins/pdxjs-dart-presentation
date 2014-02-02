@@ -1,0 +1,300 @@
+---
+build.dart --machine --removed=web/components/calendar.dart --removed=web/components/calendar.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1366 ms]
+
+---
+build.dart --machine --removed=web/components/day_element.dart --removed=web/components/day_element.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1387 ms]
+
+---
+build.dart --machine --removed=web/components/cookies.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1341 ms]
+
+---
+build.dart --machine --removed=web/components/router.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1352 ms]
+
+---
+build.dart --machine --removed=web/components/auth_submit.dart --removed=web/components/auth_submit.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1318 ms]
+
+---
+build.dart --machine --removed=web/components/custom_errors.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1358 ms]
+
+---
+build.dart --machine --changed=web/lib/data/models.dart --removed=web/components/models.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1352 ms]
+
+---
+build.dart --machine --changed=pubspec.lock
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1430 ms]
+
+---
+build.dart --machine --changed=web/lib/data/idb.dart --removed=web/components/idb.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1343 ms]
+
+---
+build.dart --machine --changed=web/lib/data/compatible_json.dart --removed=web/components/compatible_json.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1332 ms]
+
+---
+build.dart --machine --changed=web/lib/data.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1317 ms]
+
+---
+build.dart --machine --changed=web/lib/data.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".}
+build.dart finished [1297 ms]
+
+---
+build.dart --machine --changed=web/lib/data.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1277 ms]
+
+---
+build.dart --machine --changed=web/lib/data.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1322 ms]
+
+---
+build.dart --machine --changed=web/lib/data/models.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1282 ms]
+
+---
+build.dart --machine --changed=web/lib/data.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1271 ms]
+
+---
+build.dart --machine --changed=web/components/notebook_view.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1332 ms]
+
+---
+build.dart --machine --changed=web/components/notebook_view.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1311 ms]
+
+---
+build.dart --machine --changed=web/components/notebook_view.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1352 ms]
+
+---
+build.dart --machine --changed=web/components/notebook_view.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1353 ms]
+
+---
+build.dart --machine --changed=web/components/note_view.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1323 ms]
+
+---
+build.dart --machine --changed=web/lib/data/compatible_json.dart --changed=web/lib/data/idb.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1512 ms]
+
+---
+build.dart --machine --changed=server/lib/data/compatible_json.dart --changed=server/lib/data/idb.dart --change...
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [4959 ms]
+
+---
+build.dart --machine --changed=lib/data/compatible_json.dart --changed=lib/data/idb.dart --changed=lib/data/mod...
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [4474 ms]
+
+---
+build.dart --machine --changed=web/components/notebook_view.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1372 ms]
+
+---
+build.dart --machine --changed=web/components/note_view.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1386 ms]
+

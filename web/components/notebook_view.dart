@@ -2,8 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
-import 'models.dart' show Note;
-import 'idb.dart';
+import '../../lib/data.dart' show Note, NotesDb, NotesStore;
 
 @CustomTag('x-notebook-element')
 class NotebookElement extends PolymerElement {

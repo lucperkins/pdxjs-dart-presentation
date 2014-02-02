@@ -1,4 +1,4 @@
-import 'dart:convert';
+part of data;
 
 abstract class CompatibleJson {
   Map<String, dynamic> get attributes;
