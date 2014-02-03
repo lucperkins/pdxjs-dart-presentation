@@ -298,3 +298,157 @@ error web/index.html:10:5: couldn't find imported asset "web/components/calendar
 build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
 build.dart finished [1386 ms]
 
+---
+build.dart --machine --changed=web/app.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1334 ms]
+
+---
+build.dart --machine --changed=web/app.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1447 ms]
+
+---
+build.dart --machine --changed=web/app.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+error web/index.html:10:5: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".
+    <link rel="import" href="components/calendar.html">
+    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs"., Transform polymer (Linter) on pdxjs|web/index.html threw error: couldn't find imported asset "web/components/calendar.html" in package "pdxjs".}
+build.dart finished [1331 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".}
+build.dart finished [1309 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".}
+build.dart finished [1283 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".}
+build.dart finished [1281 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".}
+build.dart finished [1314 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".}
+build.dart finished [1295 ms]
+
+---
+build.dart --machine --changed=web/app.dart.js --changed=web/app.dart.js.deps --changed=web/app.dart.js.map --c...
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".}
+build.dart finished [1452 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+error web/components/notebook_view.html:4:1: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".
+<link rel="import" href="auth_submit.html">
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+build failed with errors: {Transform polymer (Linter) on pdxjs|web/components/notebook_view.html threw error: couldn't find imported asset "web/components/auth_submit.html" in package "pdxjs".}
+build.dart finished [1288 ms]
+
+---
+build.dart --machine --changed=web/components/notebook_view.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1265 ms]
+
+---
+build.dart --machine --changed=web/app.dart.js --changed=web/app.dart.js.deps --changed=web/app.dart.js.map --c...
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1387 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1391 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1323 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1284 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1312 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1286 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1296 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1456 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1315 ms]
+
+---
+build.dart --machine --changed=web/index.html
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [4637 ms]
+

@@ -11,6 +11,11 @@ void main() {
   Logger log = new Logger('main');
 
   initPolymer();
+  
+  List<UListElement> uls = querySelectorAll('ul');
+  uls.forEach((UListElement ul) {
+    ul.innerHtml = '...';
+  });
 }
 
 void serve() {
