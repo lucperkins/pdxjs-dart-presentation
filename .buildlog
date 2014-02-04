@@ -452,3 +452,13 @@ build.dart --machine --changed=web/index.html
 warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
 build.dart finished [4637 ms]
 
+---
+build.dart --machine --changed=web/app.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1612 ms]
+
+---
+build.dart --machine --changed=web/app.dart
+warning: now that main takes arguments, you need to explicitly pass options to build(). Running as if no options were passed.
+build.dart finished [1680 ms]
+
