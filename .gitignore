@@ -1,2 +1,8 @@
-packages
-*.js
+packages/
+pubspec.lock
+.project
+.buildlog
+*.js_
+*.js.deps
+*.js.map
+*.dart.js
