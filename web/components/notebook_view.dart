@@ -107,47 +107,11 @@ class NotebookElement extends PolymerElement {
     notes.sort((Note a, Note b) => a.sizeCompare(b));
   }
     
-  // Just for fun
-  void startCamera(Event e, dynamic detail, Node target) {
-    window.navigator.getUserMedia(audio: false, video: true)
-      .then((MediaStream videoStream) {
-        VideoElement videoElement = new VideoElement()
-          ..autoplay = true
-          ..src = Url.createObjectUrlFromStream(videoStream)
-          ..onLoadedMetadata.listen((Event e) => null);  
-            
-        this.replaceWith(videoElement);
-         
-        document.onClick.listen((Event e) {
-          videoStream.stop();
-        });
-    });
-  }
-  
-  void _onMutation(List<MutationRecord> mutations, MutationObserver observer) {
-    observer.disconnect();
-    print('${mutations.length} mutations occurred, the first to ${mutations[0].target}');
-  }
-  
-  void loadNotesFromServer() {
-    HttpRequest.getString('http://localhost:3030/notes').then((String res) {
-      Map<String, dynamic> json = JSON.decode(res);
-      List<Map<String, dynamic>> notesAsJson = json['notes'];
-      List<Note> notesFromServer = new List<Note>();
-      notesAsJson.forEach((Map<String, dynamic> noteAsJson) {
-        Note note = new Note.fromJson(noteAsJson);
-        if (!notes.contains(note)) {
-          notes.add(note);
-        }
-      });
-    }, onError: (Event e) => print(e.type));
-  }
-  
   @override
   void enteredView() {
     int _count = 0;
     
-    new Timer.periodic(const Duration(seconds: 30), (_) {
+    new Timer.periodic(const Duration(seconds: 5), (_) {
       print('${notes.length} saved at ${_count} seconds');
       _count += 5;
       saveNotes();
@@ -161,31 +125,10 @@ class NotebookElement extends PolymerElement {
     _db.open().then((NotesStore store) {
       _store = store;
       store.loadNotesFromDb().then((List<Note> loadedNotes) {
-        notes.addAll(loadedNotes);
-        print('There are ${notes.length} notes');
-      });
-      
-      new Timer.periodic(const Duration(seconds: 5), (_) {
-        loadNotesFromServer();
+        loadedNotes.forEach((Note note) {
+          notes.add(note);
+        });
       });
     });
-    
-    _observer = new MutationObserver(_onMutation);    
-    UListElement ul = shadowRoot.querySelector('ul');
-    List<LIElement> lis = shadowRoot.querySelectorAll('li');
-    _observer.observe(ul,
-      childList: true,
-      attributes: true,
-      characterData: true,
-      subtree: true,
-      attributeOldValue: true,
-      characterDataOldValue: true,
-      attributeFilter: []
-    );
-      
-    
-    /* new Timer.periodic(const Duration(seconds: 60), (_) {
-      _store.syncNotesFromServer();
-    }); */
   }
 }

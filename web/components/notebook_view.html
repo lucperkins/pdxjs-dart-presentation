@@ -9,7 +9,7 @@
         list-style-type: none;
       }
     </style>
-        
+      
     <ul id="notesContainer">
       <template repeat="{{notes}}">
         <li is="x-note-element" note="{{}}" on-remove-from-list="{{removeFromNotebook}}" on-delete-from-database="{{deletePermanently}}">

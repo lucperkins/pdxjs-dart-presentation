@@ -33,8 +33,7 @@ class NotesDb {
 class NotesStore {
   static const String READ_ONLY = 'readonly';
   static const String READ_WRITE = 'readwrite';
-  final NotesDb notesDb;
-  final List<Note> _notes = new List<Note>();
+  NotesDb notesDb;
   NotesStore(this.notesDb);
   
   // Some getters to make our lives easier
@@ -46,41 +45,29 @@ class NotesStore {
     
   // Load all notes stored on the DB
   Future<List<Note>> loadNotesFromDb() {
+    List<Note> notes = new List<Note>();
     Transaction trans = readOnlyTransaction;
-    ObjectStore store = readOnlyTransaction.objectStore(notesStore);
-    Stream<CursorWithValue> cursor = store.openCursor(autoAdvance: true).asBroadcastStream();
-    cursor.listen((CursorWithValue cursor) {
+    ObjectStore store = readOnlyStore;
+    Stream<CursorWithValue> notesStream = store.openCursor(autoAdvance: true).asBroadcastStream();
+    notesStream.listen((CursorWithValue cursor) {
       Note note = new Note.fromRawKV(cursor.key, cursor.value);
-      _notes.add(note);
+      notes.add(note);
     });
     return trans.completed.then((_) {
-      return _notes;
+      print('Number of notes: ${notes.length}');
+      return notes;
     });
   }
   
   // Save each note in the current notebook
-  Future saveAll(List<Note> notesList) {
+  void saveAll(List<Note> notesList) {
     notesList.forEach((Note note) {
       saveNote(note);
     });
   }
-  
-  // Use the index to find a note by title; to find a note based on some characteristic,
-  // you must do so using an index, as IndexedDB is more or less a pure key/value store
-  Future<Note> findByTitle(String title) {
-    Transaction trans = readWriteTransaction;
-    ObjectStore store = readWriteTransaction.objectStore(notesStore);
-    Index index = store.index(NotesDb.TITLE_INDEX);
-    Future future = index.get(title);
-    return future
-      .then((Map<String, dynamic> noteJson) {
-        Note note = new Note.fromJson(noteJson);
-        return note;
-      });
-  }
-  
+    
   // Save a specific note to IndexedDB
-  Future saveNote(Note note) {
+  void saveNote(Note note) {
     if (note.notSaved) {
       dynamic _key;
       Transaction trans = readWriteTransaction;
@@ -90,14 +77,13 @@ class NotesStore {
         note.key = addedKey;
         _key = addedKey;
       });
-      return trans.completed.then((_) {
-        print('Note $_key has been saved');
-      });
+      print('Note $_key has been saved');
     } else {
-      print('Note ${note.key} already saved');
+      print('Note already saved');
     }
   }
   
+  // Delete specific note
   Future deleteNote(dynamic key) {
     Transaction trans = readWriteTransaction;
     ObjectStore store = readWriteTransaction.objectStore(notesStore);

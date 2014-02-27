@@ -9,3 +9,4 @@ import 'package:polymer/polymer.dart';
 part 'data/compatible_json.dart';
 part 'data/idb.dart';
 part 'data/models.dart';
+part 'data/application.dart';

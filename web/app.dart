@@ -1,7 +1,8 @@
 library app;
 
-import 'package:polymer/polymer.dart';
+import '../lib/data.dart' show Application;
 
 void main() {
-  initPolymer();
+  Application app = new Application();
+  app.init();
 }
