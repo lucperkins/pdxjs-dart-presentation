@@ -1,6 +1,6 @@
 part of data;
 
-class Note extends Object with Comparable, Observable, CompatibleJson {
+class Note extends Object with Comparable, Observable {
   @observable String title, content;
   @observable DateTime timeCreated;
   @observable DateTime timeUpdated;
@@ -63,10 +63,6 @@ class Note extends Object with Comparable, Observable, CompatibleJson {
   }
   
   Map<String, dynamic> get attributes => toJson();
-  
-  bool compatibleWithJson(Map<String, dynamic> json) {
-    return(jsonCompatible(json));
-  }
   
   @override
   int compareTo(Note other) {

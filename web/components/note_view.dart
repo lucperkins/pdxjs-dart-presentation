@@ -21,7 +21,5 @@ class NoteElement extends LIElement with Polymer, Observable {
     dispatchEvent(deleteNotePermanently);
   }
   
-  NoteElement.created() : super.created() {
-    this.draggable = true;
-  }
+  NoteElement.created() : super.created();
 }

@@ -1,12 +1,10 @@
 import 'dart:async';
-import 'dart:convert';
 import 'dart:html';
 import 'package:polymer/polymer.dart';
 import '../../lib/data.dart' show Note, NotesDb, NotesStore;
 
 @CustomTag('x-notebook-element')
 class NotebookElement extends PolymerElement {
-  MutationObserver _observer;
     
   // We'll use an observable list for better DOM handling
   ObservableList<Note> notes = toObservable(new List<Note>());
@@ -29,7 +27,7 @@ class NotebookElement extends PolymerElement {
   bool get thereAreNotes => notes.length > 0;
   bool get noteInputsNotEmpty => title.length > 0 && content.length > 0;
   bool get titleNotUsed => notes.every((Note note) => note.title != title);
-  bool get titleLongEnough => title.length > 1;
+  bool get titleLongEnough => title.length > 3;
   bool get savable => noteInputsNotEmpty && titleNotUsed && titleLongEnough;
   
   // Adds a note to the list but does not persist it
@@ -54,9 +52,6 @@ class NotebookElement extends PolymerElement {
   // IndexedDB will refuse all duplicates, so the list will remain consistent
   void saveNotes() {
     _store.saveAll(notes);
-    /* _store.saveAll(notes).then((_) {
-      print('ok');
-    }); */
   }
   
   void displayError(Event e) {
@@ -74,14 +69,14 @@ class NotebookElement extends PolymerElement {
   // Removes a specific note on the basis of its title
   // No duplicate titles are allowed, so this operation is safe
   void removeByTitle(String title) {
-    notes.removeWhere((Note note) => note.title == title);
+    
   }
   
   // This will remove a specific note from the visible list, on the basis of information 
   // passed by the custom event fired from x-note-element (but it won't delete it)
   void removeFromNotebook(CustomEvent e, dynamic detail, Node target) {
     String removeNoteTitle = e.detail;
-    removeByTitle(removeNoteTitle);
+    notes.removeWhere((Note note) => note.title == removeNoteTitle);
     print(notes.length);
   }
   
@@ -124,7 +119,7 @@ class NotebookElement extends PolymerElement {
   NotebookElement.created() : super.created() {
     _db.open().then((NotesStore store) {
       _store = store;
-      store.loadNotesFromDb().then((List<Note> loadedNotes) {
+      _store.loadNotesFromDb().then((List<Note> loadedNotes) {
         loadedNotes.forEach((Note note) {
           notes.add(note);
         });

@@ -46,17 +46,14 @@ class NotesStore {
   // Load all notes stored on the DB
   Future<List<Note>> loadNotesFromDb() {
     List<Note> notes = new List<Note>();
-    Transaction trans = readOnlyTransaction;
-    ObjectStore store = readOnlyStore;
+    Transaction trans = notesDb.db.transaction(notesStore, READ_ONLY);
+    ObjectStore store = trans.objectStore(notesStore);
     Stream<CursorWithValue> notesStream = store.openCursor(autoAdvance: true).asBroadcastStream();
     notesStream.listen((CursorWithValue cursor) {
       Note note = new Note.fromRawKV(cursor.key, cursor.value);
       notes.add(note);
     });
-    return trans.completed.then((_) {
-      print('Number of notes: ${notes.length}');
-      return notes;
-    });
+    return trans.completed.then((_) => notes);
   }
   
   // Save each note in the current notebook
